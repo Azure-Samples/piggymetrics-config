@@ -1,0 +1,18 @@
+database: hsqldb
+spring:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath*:db/${database}/schema.sql
+      data-locations: classpath*:db/${database}/data.sql
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    generate-ddl: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,loggers,beans,threaddump
